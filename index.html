@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #3a3a3a;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        #question-form {
+            margin-bottom: 25px;
+        }
+        
+        #options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .option-btn {
+            padding: 12px 15px;
+            background-color: #e9ecef;
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        
+        .option-btn:hover {
+            background-color: #dee2e6;
+        }
+        
+        .option-btn.selected {
+            background-color: #4dabf7;
+            color: white;
+            border-color: #339af0;
+        }
+        
+        #submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        #submit-button:hover {
+            background-color: #2980b9;
+        }
+        
+        #submit-button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        #feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        #score {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>French article Quiz</h1>
+        <div>
+            <h2 id="question-text"></h2>
+            <form id="question-form">
+                <div id="options-container"></div>
+                <button id='submit-button' type="button">Confirm</button>
+            </form>
+            <div id="feedback"></div>
+            <div id="highscore"></div>
+            <div id="current-streak"></div>
+            <div id="streak"></div>
+            <div id="score"></div>
+            <div>
+                <label>
+                    <input type="checkbox" name="smart-shuffle" id="smart-shuffle" value="true" checked>Smart Shuffle
+                </label>
+                <button id='shuffle-button' type="button">Shuffle questions</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="https://unpkg.com/toaster-js/umd.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/toaster-js/default.css"/>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookie.js/1.2.3/cookie.min.js"></script>
+<script src="./main.js"></script>
