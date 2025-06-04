@@ -244,7 +244,7 @@ function main(questionData){
         $('#options-container').prepend(
             `<label>
                 <input type="checkbox" name="article" value="${a}"> ${a}
-            </label><br>`
+            </label>`
         );
     })
     displayQuestion(questionData, i);
